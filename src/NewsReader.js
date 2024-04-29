@@ -9,6 +9,8 @@ export function NewsReader() {
   const [data, setData] = useState(exampleData);   // current data returned from newsapi
   const [queryFormObject, setQueryFormObject] = useState({ ...exampleQuery });
 
+  const urlNews="/news"
+
   useEffect(() => {
     getNews(query);
   }, [query])
@@ -19,7 +21,24 @@ export function NewsReader() {
 
   async function getNews(queryObject) {
     if (queryObject.q) {
-        setData(exampleData);
+        // setData(exampleData);
+
+        try {
+          const response = await fetch(urlNews, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(queryObject),
+          });
+    
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const data = await response.json();
+          setData(data);
+        } catch (error) {
+          console.error('Error fetching news:', error);
+        }
+
     } else {
       setData({});
     }
