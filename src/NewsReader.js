@@ -1,4 +1,5 @@
 
+import { SavedQueries } from './SavedQueries';
 import { QueryForm } from './QueryForm';
 import { Articles } from './Articles';
 import { useState, useEffect } from 'react';
@@ -11,11 +12,21 @@ export function NewsReader() {
 
   const urlNews="/news"
 
+  const [savedQueries, setSavedQueries] = useState([{ ...exampleQuery }]);
+
   useEffect(() => {
     getNews(query);
   }, [query])
 
+  function onSavedQuerySelect(selectedQuery) { 
+    setQueryFormObject(selectedQuery); setQuery(selectedQuery);
+  }
+  
   function onFormSubmit(queryObject) {
+    let newSavedQueries = []; newSavedQueries.push(queryObject); for (let query of savedQueries) {
+      if (query.queryName !== queryObject.queryName) { newSavedQueries.push(query);
+      } }
+      console.log(JSON.stringify(newSavedQueries)); setSavedQueries(newSavedQueries);
     setQuery(queryObject);
   }
 
@@ -55,6 +66,16 @@ export function NewsReader() {
               formObject={queryFormObject}
               submitToParent={onFormSubmit} />
           </div>
+
+          <div className="box">
+            <span className='title'>Saved Queries</span> 
+            <SavedQueries
+              savedQueries={savedQueries}
+              selectedQueryName={query.queryName} 
+              onQuerySelect={onSavedQuerySelect} 
+            /> 
+          </div>
+
           <div className="box">
             <span className='title'>Articles List</span>
             <Articles query={query} data={data} />
