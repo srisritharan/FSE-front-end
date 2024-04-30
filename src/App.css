@@ -2,6 +2,14 @@ ol{
   font-size: small;
 }
 
+li{
+  margin-bottom: 10px; 
+}
+
+form div{
+  margin-top: 10px; 
+}
+
 .scroll-container {
   height: 400px; /* Adjust height as needed */
   width: 300px;

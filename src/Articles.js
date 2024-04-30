@@ -14,7 +14,7 @@ export function Articles(params) {
                     return (<li key={idx} >Was Removed</li>);
                   }
                   let trimTitle = item.title.substring(0,200);
-                  return (<li key={idx} style={{marginBottom: '10px', fontSize: '15px'}}>{trimTitle}<a href={item.url} target="_blank" rel="noreferrer" >&nbsp;Link</a></li>);    
+                  return (<li key={idx}>{trimTitle}<a href={item.url} target="_blank" rel="noreferrer" >&nbsp;Link</a></li>);    
                 }else{
                   return (<li key={idx}>No Title</li>);
                 }
