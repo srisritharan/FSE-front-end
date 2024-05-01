@@ -8,11 +8,10 @@ export function Articles(params) {
     
     return (
       <div>
-        Query: {queryName} || Topic: {queryText}
+        Query Name: {queryName} || Query Text: {queryText}
         <br/>Articles: {articleCount} || Language: {queryLanguage} || Page Size: {queryPageSize}
         <br/>
 
-        
         <ol >{
             articles.map((item, idx) => {
               if(item){
