@@ -27,7 +27,7 @@ export function QueryForm(params) {
             }
         }
         return false;
-    }
+    };
     return (
         <div>
             <form >
