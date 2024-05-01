@@ -3,7 +3,7 @@ import { SavedQueries } from './SavedQueries';
 import { QueryForm } from './QueryForm';
 import { Articles } from './Articles';
 import { useState, useEffect } from 'react';
-import { exampleQuery, exampleData } from './data';
+import { exampleQuery, exampleData,defaultQuery } from './data';
 import { LoginForm } from './LoginForm';
 
 export function NewsReader() {
@@ -24,7 +24,15 @@ export function NewsReader() {
     getNews(query);
   }, [query])
 
-  useEffect(() => { getQueryList(); }, [])
+  useEffect(() => {
+    // Set default query list  when no user is logged in
+    if (currentUser == null) {
+      setSavedQueries(defaultQuery);
+      setQuery(defaultQuery[0]);
+    } else {
+      getQueryList();
+    }
+  }, [currentUser]);
 
   async function login() {
     if (currentUser !== null) {
@@ -58,6 +66,8 @@ export function NewsReader() {
       const response = await fetch(urlQueries);
       if (response.ok) {
         const data = await response.json(); console.log("savedQueries has been retrieved: "); setSavedQueries(data);
+        //Selecting the first query in Saved Queries list to update the Articles List
+        setQuery(data[0]);
       }
     } catch (error) {
       console.error('Error fetching news:', error);
@@ -146,7 +156,8 @@ export function NewsReader() {
         setCredentials={setCredentials} />
       <div >
         <section className="parent" >
-          <div className="box">
+          {/* Do not display the QueryForm unless there is a logged in user. */}
+        <div className={`box ${(currentUser) ? "visible" : "hidden"}`}>
             <span className='title'>Query Form</span>
             <QueryForm
               currentUser={currentUser}

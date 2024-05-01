@@ -30,7 +30,7 @@ export function QueryForm(params) {
     }
     return (
         <div>
-            <form>
+            <form >
                 <div>
                     <label htmlFor="queryName">Query Name: </label>
                     <input type="text" size={10} id="queryName" name="queryName" value={params.formObject.queryName} onChange={handleChange} />

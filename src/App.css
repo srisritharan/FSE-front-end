@@ -14,7 +14,8 @@ form div{
   height: 200px; /* Adjust height as needed */
   width: 300px;
   overflow-y: auto;
-  border: 1px solid #ddd; /* Optional border for styling */
+  /* commenting the below code as the border is displaying differently when it used with box class*/
+  /* border: 1px solid #ddd; Optional border for styling */
 }
 
 header,p{
