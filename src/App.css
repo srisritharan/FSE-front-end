@@ -11,9 +11,9 @@ form div{
 }
 
 .scroll-container {
-  height: 400px; /* Adjust height as needed */
+  height: 200px; /* Adjust height as needed */
   width: 300px;
-  overflow-y: scroll;
+  overflow-y: auto;
   border: 1px solid #ddd; /* Optional border for styling */
 }
 

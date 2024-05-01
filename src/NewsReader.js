@@ -155,7 +155,7 @@ export function NewsReader() {
               submitToParent={onFormSubmit} />
           </div>
 
-          <div className="box">
+          <div className="box scroll-container">
             <span className='title'>Saved Queries</span>
             <SavedQueries
               savedQueries={savedQueries}
@@ -164,7 +164,7 @@ export function NewsReader() {
             />
           </div>
 
-          <div className="box">
+          <div className="box scroll-container">
             <span className='title'>Articles List</span>
             <Articles query={query} data={data} />
           </div>
