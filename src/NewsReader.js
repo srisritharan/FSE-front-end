@@ -3,7 +3,7 @@ import { SavedQueries } from './SavedQueries';
 import { QueryForm } from './QueryForm';
 import { Articles } from './Articles';
 import { useState, useEffect } from 'react';
-import { exampleQuery, exampleData,defaultQuery } from './data';
+import { exampleQuery, exampleData, defaultQuery } from './data';
 import { LoginForm } from './LoginForm';
 
 export function NewsReader() {
@@ -60,20 +60,6 @@ export function NewsReader() {
 
   }
 
-
-  async function getQueryList() {
-    try {
-      const response = await fetch(urlQueries);
-      if (response.ok) {
-        const data = await response.json(); console.log("savedQueries has been retrieved: "); setSavedQueries(data);
-        //Selecting the first query in Saved Queries list to update the Articles List
-        setQuery(data[0]);
-      }
-    } catch (error) {
-      console.error('Error fetching news:', error);
-    }
-  }
-
   async function saveQueryList(savedQueries) {
     try {
       const response = await fetch(urlQueries, {
@@ -87,7 +73,28 @@ export function NewsReader() {
     } catch (error) {
       console.error('Error fetching news:', error);
     }
-  }
+  };
+
+  async function getQueryList() {
+    try {
+      const response = await fetch(urlQueries);
+      if (response.ok) {
+        const data = await response.json(); 
+        console.log("savedQueries has been retrieved: "); 
+        // Things gets complicated if the list is truly empty. If soincluded the "exampleQuery" as a single query in the list
+        if (JSON.stringify(data) === '{}'){
+          setSavedQueries([exampleQuery]);
+          setQuery(exampleQuery);
+        }else{
+          //Selecting the first query in Saved Queries list to update the Articles List
+          setSavedQueries(data);
+          setQuery(data[0]);
+         }        
+      }
+    } catch (error) {
+      console.error('Error fetching news:', error);
+    }
+  };
 
 
   function onSavedQuerySelect(selectedQuery) {
@@ -103,7 +110,7 @@ export function NewsReader() {
       }
     }
     return false;
-  }
+  };
 
   function onFormSubmit(queryObject) {
     if (currentUser === null){
@@ -121,7 +128,7 @@ export function NewsReader() {
     saveQueryList(newSavedQueries);
     setSavedQueries(newSavedQueries);
     setQuery(queryObject);
-  }
+  };
 
   async function getNews(queryObject) {
     if (queryObject.q) {
@@ -146,7 +153,7 @@ export function NewsReader() {
     } else {
       setData({});
     }
-  }
+  };
 
   return (
     <div>
@@ -172,6 +179,9 @@ export function NewsReader() {
               savedQueries={savedQueries}
               selectedQueryName={query.queryName}
               onQuerySelect={onSavedQuerySelect}
+              currentUser={currentUser}
+              setSavedQueries={setSavedQueries}
+              saveQueryList ={saveQueryList}
             />
           </div>
 
