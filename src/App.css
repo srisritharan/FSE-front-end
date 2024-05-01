@@ -6,9 +6,9 @@ li{
   margin-bottom: 10px; 
 }
 
-form div{
+/* form div{
   margin-top: 10px; 
-}
+} */
 
 .scroll-container {
   height: 200px; /* Adjust height as needed */
@@ -20,4 +20,20 @@ form div{
 
 header,p{
   font-weight:bold;
+}
+
+.table-border {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+.table-border th,
+.table-border td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+
+input, select{
+  margin-top: 10px; 
 }
