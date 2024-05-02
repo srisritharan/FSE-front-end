@@ -88,8 +88,8 @@ code {
 /* Title styling */
 .box .title {
   font-weight: bold;
-  background-color: #0056b3; /* Liberty Mutual blue */
-  color: white;
+  background-color: #FFD000; /* Liberty Mutual blue */
+  color: black;
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 5px 5px 0 0;
@@ -168,12 +168,13 @@ select {
 /* Button styling */
 button {
   padding: 10px 20px;
-  background-color: #0056b3; /* Liberty Mutual blue */
+  background-color: #1A1446; /* Liberty Mutual blue */
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 1rem;
+  margin: 5px;
 }
 
 /* Button hover effect */

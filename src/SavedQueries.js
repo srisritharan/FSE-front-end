@@ -1,23 +1,23 @@
 export function SavedQueries(params) {
-    function onSavedQueryClick(savedQuery){
-      params.onQuerySelect(savedQuery);
-    };
-  
-    function getQueries() {
-      return params.savedQueries.map((item, idx) => {
-        let trimTitle = item.queryName.substring(0, 30);
-        return (<tr 
-          key={idx} 
-          onClick={()=>onSavedQueryClick(item)} 
-          className={(item.queryName === params.selectedQueryName) ? "selected" : ""}>
-          <td>{trimTitle}</td>
-          <td>{item.q}</td>
-          <td>{item.language}</td>
-          <td>{item.pageSize}</td>
-        </tr>
-        );
-      })
-    };
+  function onSavedQueryClick(savedQuery) {
+    params.onQuerySelect(savedQuery);
+  };
+
+  function getQueries() {
+    return params.savedQueries.map((item, idx) => {
+      let trimTitle = item.queryName.substring(0, 30);
+      return (<tr
+        key={idx}
+        onClick={() => onSavedQueryClick(item)}
+        className={(item.queryName === params.selectedQueryName) ? "selected" : ""}>
+        <td>{trimTitle}</td>
+        <td>{item.q}</td>
+        <td>{item.language}</td>
+        <td>{item.pageSize}</td>
+      </tr>
+      );
+    })
+  };
 
   let emptyList = [];
   function onResetClick(event) {
@@ -30,9 +30,9 @@ export function SavedQueries(params) {
     }
   };
 
-    return (
-        <div>
-          {params.savedQueries && params.savedQueries.length > 0 ? (
+  return (
+    <div>
+      {params.savedQueries && params.savedQueries.length > 0 ? (
         <table className="table-border">
           <thead>
             <tr>
@@ -47,20 +47,17 @@ export function SavedQueries(params) {
       ) : (
         <p>No Saved Queries, Yet!</p>
       )}
-        
-        {/* - Add a "reset" button to the SavedQuery component 
+
+      {/* - Add a "reset" button to the SavedQuery component 
         - Do not display the "reset" button when no user is logged in. */}
-        <div className={`${(params.currentUser == null) ? "hidden" : "visible"}`}>
-          
-          <span style={{ display: "block" }}>
-            <input
-              type="button"
-              value="Reset Saved Queries"
-              onClick={onResetClick}
-            />
-          </span>
-        </div>
+      <div className={`${params.currentUser == null ? "hidden" : "visible"}`}>
+        <span style={{ display: "block" }}>
+          <button type="button" onClick={onResetClick}>
+            Reset Saved Queries
+          </button>
+        </span>
       </div>
-    )
-    
+    </div>
+  );
+
 }
