@@ -156,11 +156,13 @@ export function NewsReader() {
   };
 
   return (
-    <div>
-      <LoginForm login={login}
-        credentials={credentials}
-        currentUser={currentUser}
-        setCredentials={setCredentials} />
+    <div className="app-container">
+      <div className='login-container'>
+        <LoginForm login={login}
+          credentials={credentials}
+          currentUser={currentUser}
+          setCredentials={setCredentials} />
+      </div>
       <div >
         <section className="parent" >
           {/* Do not display the QueryForm unless there is a logged in user. */}

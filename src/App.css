@@ -1,39 +1,183 @@
-ol{
-  font-size: small;
+/* Center the .app-container horizontally and vertically */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: flex-start;
 }
 
-li{
-  margin-bottom: 10px; 
+/* Reset default margin and font */
+body {
+  margin: 5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5; /* Light grey background */
 }
 
-/* form div{
-  margin-top: 10px; 
-} */
-
-.scroll-container {
-  height: 200px; /* Adjust height as needed */
-  width: 300px;
-  overflow-y: auto;
-  /* commenting the below code as the border is displaying differently when it used with box class*/
-  /* border: 1px solid #ddd; Optional border for styling */
-}
-
-header,p{
-  font-weight:bold;
-}
-
-.table-border {
-  border-collapse: collapse;
-  border: 1px solid black;
-}
-
-.table-border th,
-.table-border td {
-  border: 1px solid black;
-  padding: 8px;
+/* Style for header paragraph */
+header p {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  font-weight: bolder;
+  color: #333;
   text-align: center;
 }
 
-input, select{
-  margin-top: 10px; 
+/* Style for ordered lists */
+ol {
+  padding-left: 20px;
 }
+
+/* Style for code blocks */
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+/* Float classes for positioning */
+.left {
+  float: left;
+  border: 1px solid  black;
+}
+
+.right {
+  float: right;
+  border: 1px solid  black;
+}
+
+.app-container{
+  display: flex;
+  flex-direction: column;
+  max-width: 1500px;
+
+}
+
+.login-container{
+  flex: 1 0 auto; /* shorthand for flex-grow: 1, flex-shrink: 0, flex-basis: auto */
+  background-color: lightblue; /* Just for visualization */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.parent {
+  display: flex;
+  flex-wrap: wrap; /* allow items to wrap when there isn't enough space */
+  align-items: stretch;
+}
+
+/* Styling for boxes */
+.box {
+  flex: 1 0 30%; /* flex-grow: 1, flex-shrink: 0, flex-basis: 30% */
+  max-width: calc(50% ); /* Set maximum width for 2 items */
+  border: 1px solid #ddd;
+  padding: 15px;
+  font-size: 0.8rem;
+  box-sizing: border-box;
+  background-color: white; /* White background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.box-c:nth-child(3n+1) {
+  max-width: calc(33.33% - 10px);
+}
+
+/* Title styling */
+.box .title {
+  font-weight: bold;
+  background-color: #0056b3; /* Liberty Mutual blue */
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px 5px 0 0;
+  text-align: center;
+  display: block;
+}
+
+/* Selected item styling */
+.selected {
+  font-weight: bold;
+}
+
+/* Hidden class */
+.hidden {
+  display: none;
+}
+
+/* Visible class */
+.visible {
+  display: block;
+}
+
+/* More Hidden class */
+.moreHidden {
+  display: none;
+}
+
+/* More Visible class */
+.moreVisible {
+  display: block;
+}
+
+/* Style for ordered lists inside scroll container */
+.scroll-container ol {
+  font-size: 1rem;
+}
+
+/* Style for list items inside scroll container */
+.scroll-container li {
+  margin-bottom: 10px;
+}
+
+/* Style for scroll container */
+.scroll-container {
+  height: 325px;
+  width: 300px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/* Table border collapse and cell padding */
+.table-border {
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+/* Table cell padding and alignment */
+.table-border th,
+.table-border td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+/* Margin top for input and select elements */
+input,
+select {
+  margin-top: 10px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+/* Button styling */
+button {
+  padding: 10px 20px;
+  background-color: #0056b3; /* Liberty Mutual blue */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #003f7f; /* Slightly darker shade for hover */
+}
+
