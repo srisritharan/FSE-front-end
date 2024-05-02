@@ -6,11 +6,16 @@ export function SavedQueries(params) {
     function getQueries() {
       return params.savedQueries.map((item, idx) => {
         let trimTitle = item.queryName.substring(0, 30);
-        return (<li 
+        return (<tr 
           key={idx} 
           onClick={()=>onSavedQueryClick(item)} 
-          className={(item.queryName === params.selectedQueryName)?"selected":""}
-        >{trimTitle + ": \"" + item.q + "\""} </li>);
+          className={(item.queryName === params.selectedQueryName) ? "selected" : ""}>
+          <td>{trimTitle}</td>
+          <td>{item.q}</td>
+          <td>{item.language}</td>
+          <td>{item.pageSize}</td>
+        </tr>
+        );
       })
     };
 
@@ -27,15 +32,26 @@ export function SavedQueries(params) {
 
     return (
         <div>
-          <ul >{
-            (params.savedQueries && params.savedQueries.length > 0)
-            ? getQueries()
-            : <li>No Saved Queries, Yet!</li>
-        }</ul>
+          {params.savedQueries && params.savedQueries.length > 0 ? (
+        <table className="table-border">
+          <thead>
+            <tr>
+              <th>Query Name</th>
+              <th>Query Text</th>
+              <th>Language</th>
+              <th>Page Size</th>
+            </tr>
+          </thead>
+          <tbody>{getQueries()}</tbody>
+        </table>
+      ) : (
+        <p>No Saved Queries, Yet!</p>
+      )}
         
         {/* - Add a "reset" button to the SavedQuery component 
         - Do not display the "reset" button when no user is logged in. */}
         <div className={`${(params.currentUser == null) ? "hidden" : "visible"}`}>
+          
           <span style={{ display: "block" }}>
             <input
               type="button"
