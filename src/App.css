@@ -10,7 +10,9 @@ html, body {
 /* Reset default margin and font */
 body {
   margin: 5;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f5f5f5; /* Light grey background */
@@ -28,23 +30,22 @@ header p {
 /* Style for ordered lists */
 ol {
   padding-left: 20px;
-  font-size: 1rem;
 }
 
 /* Style for code blocks */
 code {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
-
 /* Float classes for positioning */
 .left {
   float: left;
-  border: 1px solid #ddd;
+  border: 1px solid  black;
 }
 
 .right {
   float: right;
-  border: 1px solid #ddd;
+  border: 1px solid  black;
 }
 
 .app-container{
@@ -93,6 +94,7 @@ code {
   margin-bottom: 10px;
   border-radius: 5px 5px 0 0;
   text-align: center;
+  display: block;
 }
 
 /* Selected item styling */
