@@ -1,11 +1,11 @@
-@media only screen and (max-width: 600px) {
-  /* Adjust styles for smaller screens */
-  body {
-    /* Example adjustment */
-    font-size: 14px;
-  }
+/* Center the .app-container horizontally and vertically */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: flex-start;
 }
-
 
 /* Reset default margin and font */
 body {
@@ -18,8 +18,9 @@ body {
 
 /* Style for header paragraph */
 header p {
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  font-weight: bolder;
   color: #333;
   text-align: center;
 }
@@ -46,23 +47,41 @@ code {
   border: 1px solid #ddd;
 }
 
-/* Flex container class */
+.app-container{
+  display: flex;
+  flex-direction: column;
+  max-width: 1500px;
+
+}
+
+.login-container{
+  flex: 1 0 auto; /* shorthand for flex-grow: 1, flex-shrink: 0, flex-basis: auto */
+  background-color: lightblue; /* Just for visualization */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
 .parent {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* allow items to wrap when there isn't enough space */
+  align-items: stretch;
 }
 
 /* Styling for boxes */
 .box {
+  flex: 1 0 30%; /* flex-grow: 1, flex-shrink: 0, flex-basis: 30% */
+  max-width: calc(50% ); /* Set maximum width for 2 items */
   border: 1px solid #ddd;
   padding: 15px;
-  min-width: 200px;
-  max-width: 300px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  box-sizing: border-box;
   background-color: white; /* White background */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+}
+
+.box-c:nth-child(3n+1) {
+  max-width: calc(33.33% - 10px);
 }
 
 /* Title styling */
@@ -73,6 +92,7 @@ code {
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 5px 5px 0 0;
+  text-align: center;
 }
 
 /* Selected item styling */
@@ -112,7 +132,7 @@ code {
 
 /* Style for scroll container */
 .scroll-container {
-  height: 300px;
+  height: 325px;
   width: 300px;
   overflow-y: auto;
   border: 1px solid #ddd;
