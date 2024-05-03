@@ -69,7 +69,7 @@ export function NewsReader() {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      console.log("savedQueries array has been persisted:");
+      // console.log("savedQueries array has been persisted:");
     } catch (error) {
       console.error('Error fetching news:', error);
     }
@@ -80,8 +80,8 @@ export function NewsReader() {
       const response = await fetch(urlQueries);
       if (response.ok) {
         const data = await response.json(); 
-        console.log("savedQueries has been retrieved: "); 
-        // Things gets complicated if the list is truly empty. If soincluded the "exampleQuery" as a single query in the list
+        // console.log("savedQueries has been retrieved: "); 
+        // Things get complicated if the list is truly empty. So included the "exampleQuery" as a single query in the list
         if (JSON.stringify(data) === '{}'){
           setSavedQueries([exampleQuery]);
           setQuery(exampleQuery);
@@ -124,7 +124,7 @@ export function NewsReader() {
       let newSavedQueries = []; newSavedQueries.push(queryObject); for (let query of savedQueries) {
       if (query.queryName !== queryObject.queryName) { newSavedQueries.push(query); }
     }
-    console.log(JSON.stringify(newSavedQueries));
+    // console.log(JSON.stringify(newSavedQueries));
     saveQueryList(newSavedQueries);
     setSavedQueries(newSavedQueries);
     setQuery(queryObject);
